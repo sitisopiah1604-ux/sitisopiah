@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>"Sopi.png"</title>
+    <!-- Memuat Tailwind CSS CDN -->
+    <script  Sopi.png</script>
+    <!-- Konfigurasi Tailwind untuk menggunakan font Inter dan warna kustom -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#1E3A8A', // Biru Tua
+                        'secondary': '#3B82F6', // Biru Cerah
+                        'accent': '#F59E0B', // Kuning/Jingga
+                        'bg-light': '#F9FAFB',
+                        'text-dark': '#1F2937',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Menggunakan font Inter dari Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Gaya khusus untuk item garis waktu (timeline) */
+        .timeline-item {
+            position: relative;
+            padding-left: 2.5rem; /* Padding untuk garis */
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0.5rem;
+            width: 2px;
+            height: 100%;
+            background-color: #D1D5DB; /* Abu-abu terang */
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            top: 0.5rem;
+            left: 0rem;
+            width: 1.25rem;
+            height: 1.25rem;
+            background-color: #1E3A8A; /* Warna Primer */
+            border: 4px solid #F9FAFB; /* Background terang */
+            border-radius: 50%;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="font-sans text-text-dark bg-bg-light">
+
+    <!-- Konten Data CV (Diisi dengan data DeeSopi) -->
+    <script type="text/javascript">
+        // Data Pribadi (Identitas)
+        const profile = {
+            name: "DeeSopi",
+            title: "Ini Hanya Sebuah Pajangan",
+            bio: "Saya adalah Seorang Pelajar Dan Santri yang Ingin Mengetahui Apapun Yang Saya Bisa.",
+            image_url: "Sopi.png", // Ganti dengan URL foto Anda
+            linkedin: "#",
+            github: "#",
+            email: "dee.sopi@example.com",
+            phone: "08 Berapa Tuh??",
+            cv_link: "#" // Ganti dengan URL unduhan CV
+        };
+
+        // Data Pengalaman Kerja
+        const experiences = [
+            {
+                role: "Pelajar Dan Santri Yang Terpelajar",
+                company: "DeeSopi Store",
+                period: "2022 - Sekarang",
+                description: "Memimpin tim Yang Bekerja Secara Ikhlaaas},
+            {
+                role: "Desainer Senior",
+                company: "DeeSopi digical com",
+                period: "2026-2030",
+                description: "Bertanggung jawab atas seluruh proses desain produk, Dan Kegiatan Pekerja},
+            {
+                role: "Asisten Pengembang Junior",
+                company: "DeeSopi Lokal",
+                period: "2018 - 2019",
+                description: "Mendukung pengembangan Sesuatu Yang Menjadi Bakat Seseorang}
+        ];
+
+        // Data Pendidikan
+        const educations = [
+            {
+                degree: "S.Ked (Sarjana Kedokteran )",
+                major: "Tekhnik Membedah Hati",
+                institution: "Universitas Sakahayang",
+                period: "2029-2034",
+                gpa: "IPK: 3.85/4.00",
+            },
+            {
+                degree: "SMA",
+                major: "Ilmu Pengetahuan Alam",
+                institution: "SMA Negri 1 Sukaresmi",
+                period: "2026-2029",
+                gpa: "IPK: 04.00/15.00",
+            }
+        ];
+
+        // Data Portofolio (Ganti dengan proyek nyata Anda)
+        const portfolios = [
+            {
+                title: "Aplikasi Manajemen Proyek 'TaskFlow'",
+                description: "Desain UI/UX lengkap dan implementasi frontend menggunakan Vue.js dan Tailwind CSS.",
+                tags: ["UI/UX", "Vue.js", "Tailwind", "SaaS"],
+                image_url: "https://placehold.co/400x250/3B82F6/FFFFFF?text=TaskFlow+Mockup",
+                link: "#"
+            },
+            {
+                title: "Website E-Commerce 'Batik Nusantara'",
+                description: "Pengembangan penuh stack (MERN) untuk toko online yang menjual produk batik premium.",
+                tags: ["React", "Node.js", "MongoDB", "E-Commerce"],
+                image_url: "https://placehold.co/400x250/F59E0B/FFFFFF?text=Batik+Nusantara+Mockup",
+                link: "#"
+            },
+            {
+                title: "Studi Kasus Redesign Aplikasi Mobile",
+                description: "Analisis dan redesain antarmuka aplikasi bank digital untuk meningkatkan retensi pengguna.",
+                tags: ["Figma", "Design System", "Usability Testing"],
+                image_url: "https://placehold.co/400x250/1E3A8A/FFFFFF?text=Mobile+Redesign",
+                link: "#"
+            }
+        ];
+
+        // Fungsi untuk mengisi data ke dalam DOM setelah HTML dimuat
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('profile-name').textContent = profile.name;
+            document.getElementById('profile-title').textContent = profile.title;
+            document.getElementById('profile-bio').textContent = profile.bio;
+            document.getElementById('profile-image').src = profile.image_url;
+            document.getElementById('download-cv-btn').href = profile.cv_link;
+            
+            // Pengalaman Kerja
+            const expContainer = document.getElementById('experience-list');
+            experiences.forEach(exp => {
+                const item = document.createElement('div');
+                item.className = 'timeline-item';
+                item.innerHTML = `
+                    <h3 class="font-bold text-lg text-primary">${exp.role}</h3>
+                    <p class="text-sm text-gray-700">${exp.company} | ${exp.period}</p>
+                    <p class="mt-2 text-gray-600 text-sm">${exp.description}</p>
+                `;
+                expContainer.appendChild(item);
+            });
+
+            // Pendidikan
+            const eduContainer = document.getElementById('education-list');
+            educations.forEach(edu => {
+                const item = document.createElement('div');
+                item.className = 'timeline-item';
+                item.innerHTML = `
+                    <h3 class="font-bold text-lg text-primary">${edu.degree} - ${edu.major}</h3>
+                    <p class="text-sm text-gray-700">${edu.institution} | ${edu.period}</p>
+                    ${edu.gpa ? `<p class="mt-1 text-gray-600 text-sm">${edu.gpa}</p>` : ''}
+                `;
+                eduContainer.appendChild(item);
+            });
+
+            // Portofolio
+            const portfolioContainer = document.getElementById('portfolio-grid');
+            portfolios.forEach(proj => {
+                const tagsHtml = proj.tags.map(tag => `<span class="inline-block bg-primary/10 text-primary text-xs px-3 py-1 rounded-full font-medium">${tag}</span>`).join('');
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 overflow-hidden';
+                card.innerHTML = `
+                    <a href="${proj.link}" target="_blank" class="block">
+                        <img src="${proj.image_url}" alt="${proj.title}" class="w-full h-48 object-cover object-center">
+                        <div class="p-6">
+                            <h4 class="font-bold text-xl mb-2 text-text-dark">${proj.title}</h4>
+                            <p class="text-gray-600 mb-4 text-sm">${proj.description}</p>
+                            <div class="flex flex-wrap gap-2">${tagsHtml}</div>
+                        </div>
+                    </a>
+                `;
+                portfolioContainer.appendChild(card);
+            });
+
+            // Kontak
+            document.getElementById('contact-email').textContent = profile.email;
+            document.getElementById('contact-phone').textContent = profile.phone;
+            document.getElementById('contact-linkedin').href = profile.linkedin;
+            document.getElementById('contact-github').href = profile.github;
+        });
+
+        // Fungsi untuk menangani pengiriman formulir (placeholder)
+        function handleContactForm(event) {
+            event.preventDefault();
+            const form = event.target;
+            const name = form.name.value;
+            
+            // Ganti dengan logika pengiriman formulir nyata (misalnya, ke layanan email)
+            // Untuk demo ini, kita hanya menampilkan pesan sukses
+            const messageBox = document.getElementById('form-message');
+            messageBox.textContent = \`Terima kasih, \${name}! Pesan Anda telah terkirim (simulasi).\`;
+            messageBox.classList.remove('hidden');
+            messageBox.classList.add('bg-green-100', 'text-green-700');
+            form.reset();
+            setTimeout(() => {
+                messageBox.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+    
+    <!-- HEADER & NAVIGASI -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <a href="#" class="text-2xl font-extrabold text-primary" id="header-name">DeeSopi</a>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#about" class="text-gray-600 hover:text-secondary font-medium transition duration-150">Tentang</a>
+                    <a href="#experience" class="text-gray-600 hover:text-secondary font-medium transition duration-150">Pengalaman</a>
+                    <a href="#portfolio" class="text-gray-600 hover:text-secondary font-medium transition duration-150">Portofolio</a>
+                    <a href="#contact" class="text-gray-600 hover:text-secondary font-medium transition duration-150">Kontak</a>
+                </nav>
+                <!-- Tombol menu hamburger untuk mobile (jika diperlukan) -->
+                <button class="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100 transition duration-150">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- BAGIAN 1: IDENTITAS (HERO/TENTANG SAYA) -->
+        <section id="about" class="py-20 md:py-32 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
+                    <!-- Kolom Kiri: Foto & Info Singkat -->
+                    <div class="md:col-span-1 flex flex-col items-center">
+                        <!-- Foto Profil -->
+                        <div class="w-40 h-40 rounded-full bg-gray-200 overflow-hidden ring-4 ring-primary ring-offset-4 shadow-xl">
+                            <img id="profile-image" src="https://placehold.co/150x150/1E3A8A/FFFFFF?text=DS" alt="Foto Profil DeeSopi" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/150x150/1E3A8A/FFFFFF?text=DS'">
+                        </div>
+                        
+                        <!-- Nama dan Jabatan -->
+                        <h1 class="text-4xl font-extrabold text-primary mt-6" id="profile-name">DeeSopi</h1>
+                        <p class="text-xl text-accent font-semibold mt-1" id="profile-title">Spesialis Pengembangan Web & Desain UI/UX</p>
+                        
+                        <!-- Link Media Sosial -->
+                        <div class="flex space-x-4 mt-4 text-gray-500">
+                            <a id="contact-linkedin" href="#" target="_blank" class="hover:text-primary transition duration-150" aria-label="LinkedIn">
+                                <!-- Ikon LinkedIn (Contoh SVG) -->
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.529-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.767 7 2.45v6.785z"/></svg>
+                            </a>
+                            <a id="contact-github" href="#" target="_blank" class="hover:text-primary transition duration-150" aria-label="GitHub">
+                                <!-- Ikon GitHub (Contoh SVG) -->
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.082-.741.083-.725.083-.725 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.304.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.003.404 2.292-1.552 3.301-1.23 3.301-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.565 21.808 24 17.307 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                            </a>
+                        </div>
+
+                        <!-- Tombol Unduh CV -->
+                        <a id="download-cv-btn" href="#" download class="mt-6 px-6 py-3 bg-accent text-text-dark font-bold rounded-lg shadow-md hover:bg-yellow-600 transition duration-300 transform hover:scale-105">
+                            Unduh CV (PDF)
+                        </a>
+                    </div>
+                    
+                    <!-- Kolom Kanan: Deskripsi Bio -->
+                    <div class="md:col-span-2">
+                        <h2 class="text-3xl font-bold text-text-dark mb-4 border-b-2 border-primary pb-2">Tentang Saya</h2>
+                        <p class="text-gray-700 leading-relaxed text-lg" id="profile-bio"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BAGIAN 2: PENGALAMAN KERJA & PENDIDIKAN -->
+        <section id="experience" class="py-20 md:py-24 bg-bg-light">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-text-dark mb-12 text-center">Riwayat Profesional</h2>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                    
+                    <!-- Pengalaman Kerja -->
+                    <div>
+                        <h3 class="text-3xl font-semibold text-primary mb-6 border-l-4 border-accent pl-4">Pengalaman Kerja</h3>
+                        <div id="experience-list" class="space-y-8">
+                            <!-- Konten Pengalaman diisi oleh JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <!-- Pendidikan -->
+                    <div>
+                        <h3 class="text-3xl font-semibold text-primary mb-6 border-l-4 border-accent pl-4">Pendidikan</h3>
+                        <div id="education-list" class="space-y-8">
+                            <!-- Konten Pendidikan diisi oleh JavaScript -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- BAGIAN 3: PORTOFOLIO -->
+        <section id="portfolio" class="py-20 md:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-text-dark mb-12 text-center">Portofolio Pilihan</h2>
+                <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Kartu Portofolio diisi oleh JavaScript -->
+                </div>
+                <div class="text-center mt-12">
+                    <a href="#" target="_blank" class="px-8 py-3 border-2 border-primary text-primary font-bold rounded-lg hover:bg-primary hover:text-white transition duration-300 shadow-md">
+                        Lihat Semua Proyek
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- BAGIAN 4: KONTAK -->
+        <section id="contact" class="py-20 md:py-24 bg-primary text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-white mb-12 text-center">Hubungi Saya</h2>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    
+                    <!-- Informasi Kontak -->
+                    <div class="space-y-6">
+                        <p class="text-lg">
+                            Saya terbuka untuk peluang kolaborasi baru dan proyek yang menarik. Jangan ragu untuk menghubungi saya melalui saluran di bawah ini.
+                        </p>
+                        
+                        <div class="flex items-center space-x-4">
+                            <!-- Ikon Email -->
+                            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-1 12H4a2 2 0 01-2-2V6a2 2 0 012-2h16a2 2 0 012 2v12a2 2 0 01-2 2z"></path></svg>
+                            <span id="contact-email" class="text-lg">dee.sopi@example.com</span>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <!-- Ikon Telepon -->
+                            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.128a11.042 11.042 0 005.516 5.516l1.128-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                            <span id="contact-phone" class="text-lg">+62 812 3456 7890</span>
+                        </div>
+                        
+                        <h4 class="text-xl font-semibold pt-4">Tautan Langsung:</h4>
+                        <div class="flex space-x-4">
+                            <!-- Ikon LinkedIn Besar -->
+                            <a id="contact-linkedin-large" href="#" target="_blank" class="p-3 bg-secondary rounded-full hover:bg-accent transition duration-300" aria-label="LinkedIn">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.529-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.767 7 2.45v6.785z"/></svg>
+                            </a>
+                            <!-- Ikon GitHub Besar -->
+                            <a id="contact-github-large" href="#" target="_blank" class="p-3 bg-secondary rounded-full hover:bg-accent transition duration-300" aria-label="GitHub">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.082-.741.083-.725.083-.725 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.304.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.003.404 2.292-1.552 3.301-1.23 3.301-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.565 21.808 24 17.307 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Formulir Kontak -->
+                    <div class="bg-white p-8 rounded-xl shadow-2xl text-text-dark">
+                        <h3 class="text-2xl font-bold mb-6">Kirim Pesan</h3>
+                        <div id="form-message" class="p-3 mb-4 rounded-lg font-medium hidden"></div>
+
+                        <form onsubmit="handleContactForm(event)" class="space-y-4">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700">Nama Anda</label>
+                                <input type="text" id="name" name="name" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700">Email Anda</label>
+                                <input type="email" id="email" name="email" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700">Pesan</label>
+                                <textarea id="message" name="message" rows="4" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary"></textarea>
+                            </div>
+                            <button type="submit" class="w-full px-4 py-2 bg-accent text-text-dark font-bold rounded-lg shadow-lg hover:bg-yellow-600 transition duration-300">
+                                Kirim Sekarang
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-800 py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-400">
+            <p>&copy; <span id="current-year"></span> DeeSopi. Hak Cipta Dilindungi.</p>
+            <p class="text-sm mt-1">Dibuat dengan ❤️ untuk presentasi profesional.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mengisi tahun saat ini di footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
